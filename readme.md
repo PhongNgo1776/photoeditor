@@ -7,7 +7,7 @@ Angular file upload is not a plugin. it is the source code of the tutorial writt
 - run `npm install` to install dependencies, and `npm start` to start the app.
 - navigate to localhost:3000 and test the application
 ### If you want to play around with the angular source code
-- open another terminal, cd into this same directory, cd into the testupload folder.
+- open another terminal, cd into this same directory, cd into the UI folder.
 - install angular-cli if you dont already have it using `npm install -g angular-cli`.
 - run `npm install`.
 - run `ng serve`

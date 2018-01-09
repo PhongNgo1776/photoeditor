@@ -1,7 +1,8 @@
 var express = require('express');
+var fs = require('fs');
 var router = express.Router();
 var multer = require('multer');
-var DIR = './uploads/';
+var DIR = './UI/src/assets/uploads';
 var upload = multer({dest: DIR}).single('photo');
 /* GET home page. */
 
@@ -16,9 +17,14 @@ router.post('/', function (req, res, next) {
 	      // An error occurred when uploading
 	      console.log(err);
 	      return res.status(422).send("an Error occured")
-	    }  
-	    path = req.file.path;
-	    return res.send("Upload Completed for "+path); 
+			}  
+			
+			var destFolder = DIR + '/';
+			fs.rename(destFolder + req.file.filename, destFolder + req.file.originalname);
+			
+			var responseData = req.file;
+			responseData.originalname = 'assets/uploads/' + responseData.originalname;
+	    return res.send(responseData); 
   });	 
 })
 
