@@ -23,7 +23,7 @@ router.post('/', function (req, res, next) {
 			fs.rename(destFolder + req.file.filename, destFolder + req.file.originalname);
 			
 			var responseData = req.file;
-			responseData.originalname = 'assets/uploads/' + responseData.originalname;
+			responseData.path = 'assets/uploads/' + responseData.originalname;
 	    return res.send(responseData); 
   });	 
 })
