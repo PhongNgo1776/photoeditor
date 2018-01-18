@@ -22,45 +22,6 @@
   
 </div>
 
-<!-- <input type="file" (change)="fileChangeEvent($event);" />
-
-<image-cropper
-    [imageChangedEvent]="imageChangedEvent"
-    [maintainAspectRatio]="false"
-    [aspectRatio]="4/3"
-    [resizeToWidth]="512"
-    format="jpg"
-    (imageCropped)="imageCropped($event)"
-></image-cropper>
-
-<img [src]="croppedImage" hr/>
-<a target="_self" [href]="croppedImage" 
-     download="responseJson.png" class="button">
-     Download
-  </a> -->
-
-  <!--  -->
-
-
-  <!-- <div>
-    <img-cropper [image]="data" [settings]="cropperSettings"></img-cropper><br>
-    <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
-</div>
-
-<div class="file-upload">
-  <span class="text">upload</span>
-  <input id="custom-input" type="file" (change)="fileChangeListener($event)">
-</div>
-<img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
-<br>
-<span class="result rounded" *ngIf="data.image" >
-  <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
-</span> -->
-
-
-<!--  -->
-
-
 <input type="file" (change)="fileChangeEvent($event)" />
     <image-cropper
         style="width:500px"
@@ -71,3 +32,10 @@
         (imageCropped)="imageCropped($event)"
     ></image-cropper>
     <img [src]="croppedImage" />
+    <input [value]="croppedImage">
+    <div>
+      <p>Taken from wikpedia</p>
+      <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+  AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+      9TXL0Y4OHwAAAABJRU5ErkJggg==" />
+  </div> 

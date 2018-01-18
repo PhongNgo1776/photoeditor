@@ -19,6 +19,8 @@ router.post('/', function (req, res, next) {
 	      return res.status(422).send("an Error occured")
 			}  
 			
+			// console.log('IP: ' + JSON.stringify(req));
+
 			var destFolder = DIR + '/';
 			fs.rename(destFolder + req.file.filename, destFolder + req.file.originalname);
 			

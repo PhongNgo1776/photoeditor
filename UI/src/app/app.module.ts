@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { AppComponent } from './app.component';
-import { ImageCropperComponent } from 'app/image-cropper.component';
+import { ImageCropperComponent } from 'app/image-cropper/image-cropper.component';
+import { IpAddressService } from 'app/services/get-ip.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { ImageCropperComponent } from 'app/image-cropper.component';
     FormsModule,
     HttpModule,
   ],
-  providers: [],
+  providers: [IpAddressService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
