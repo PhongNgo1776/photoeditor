@@ -1,34 +1,33 @@
-import { Component, OnInit, ElementRef, Input, ViewChild, } from '@angular/core';
-
+import { Component } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
-import { Http, Response } from '@angular/http';
-import "rxjs/add/operator/do";
-import "rxjs/add/operator/map";
-import * as FileSaver from 'file-saver';
-import { IpAddressService } from 'app/services/get-ip.service';
+import { IpAddressService } from './ip-address.service';
+import { MessageService } from './message.service';
+import { HeroService } from './hero.service';
 
 const BACKEND_URL = 'http://localhost:3000';
 const FRONTEND_URL = 'http://localhost:4200/';
 const UPLOAD_PATH = 'assets/uploads/';
-
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-    public uploader: FileUploader = new FileUploader({ url: BACKEND_URL, itemAlias: 'photo' });
+export class AppComponent {
+  public uploader: FileUploader = new FileUploader({ url: BACKEND_URL, itemAlias: 'photo' });
     title = 'Upload or drop your photo and make it beautiful :)';
     responseJson: any;
     href = '';
+    url = 'http://angularorange.io/json/httpclientdata.json';
 
-    constructor(private ipAdressService: IpAddressService) { }
+    constructor(private messageService: MessageService, private heroService: HeroService) { }
 
     ngOnInit() {
-        console.log("ip");
-        this.ipAdressService.getIpAddress().subscribe(data => {
-            console.log(data);
-        });
+        // this.http.get(this.url)
+        //     .subscribe(data => {
+        //         console.log('DATA: ' + data);
+        //     });
+        //this.ipAddressService.getIpAddress();
+        this.heroService.getHeroes();
 
         this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
         this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
@@ -46,46 +45,7 @@ export class AppComponent implements OnInit {
         this.imageChangedEvent = event;
     }
     imageCropped(image: string) {
-        console.log(JSON.stringify(image));
         this.croppedImage = image;
 
     }
-
-    //    asdf-----------------------------
-
-    // data: any;
-    // cropperSettings: CropperSettings;
-
-
-    // @ViewChild('cropper', undefined)
-    // cropper:ImageCropperComponent;
-
-    // constructor() {
-    //     this.cropperSettings = new CropperSettings();
-    //     this.cropperSettings.noFileInput = true;
-    //     this.data = {};
-    // }
-
-    // fileChangeListener($event) {
-    //     var image:any = new Image();
-    //     var file:File = $event.target.files[0];
-    //     var myReader:FileReader = new FileReader();
-    //     var that = this;
-    //     myReader.onloadend = function (loadEvent:any) {
-    //         image.src = loadEvent.target.result;
-    //         that.cropper.setImage(image);
-
-    //     };
-
-    //     myReader.readAsDataURL(file);
-    // }
-
-
-
-
-
-
-
-
-
 }

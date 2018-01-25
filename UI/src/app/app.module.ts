@@ -1,24 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { NgModule }       from '@angular/core';
+import { BrowserModule }  from '@angular/platform-browser';
+import { FormsModule }    from '@angular/forms';
+import { AppComponent }         from './app.component';
+import { MessageService }       from './message.service';
+import { IpAddressService }       from './ip-address.service';
 import { FileSelectDirective } from 'ng2-file-upload';
-import { AppComponent } from './app.component';
-import { ImageCropperComponent } from 'app/image-cropper/image-cropper.component';
-import { IpAddressService } from 'app/services/get-ip.service';
+import { ImageCropperComponent } from './image-cropper/image-cropper.component';
+import { Http, HttpModule } from '@angular/http';
+import { HeroService } from './hero.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FileSelectDirective,
-    ImageCropperComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpModule
   ],
-  providers: [IpAddressService],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    ImageCropperComponent,
+    FileSelectDirective,
+  ],
+  providers: [ HeroService, MessageService] ,
+  bootstrap: [ AppComponent ],
 })
 export class AppModule { }
