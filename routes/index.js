@@ -30,5 +30,25 @@ router.post('/', function (req, res, next) {
   });	 
 })
 
+router.post('/', function (req, res, next) {
+	var path = '';
+	upload(req, res, function (err) {
+		 if (err) {
+			 // An error occurred when uploading
+			 console.log(err);
+			 return res.status(422).send("an Error occured")
+		 }  
+		 
+		 // console.log('IP: ' + JSON.stringify(req));
+
+		 var destFolder = DIR + '/';
+		 fs.rename(destFolder + req.file.filename, destFolder + req.file.originalname);
+		 
+		 var responseData = req.file;
+		 responseData.path = 'assets/uploads/' + responseData.originalname;
+		 return res.send(responseData); 
+ });	 
+})
+
 
 module.exports = router;

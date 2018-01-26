@@ -7,7 +7,6 @@ import { IpAddressService }       from './ip-address.service';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { ImageCropperComponent } from './image-cropper/image-cropper.component';
 import { Http, HttpModule } from '@angular/http';
-import { HeroService } from './hero.service';
 
 @NgModule({
   imports: [
@@ -20,7 +19,7 @@ import { HeroService } from './hero.service';
     ImageCropperComponent,
     FileSelectDirective,
   ],
-  providers: [ HeroService, MessageService] ,
+  providers: [ IpAddressService, MessageService] ,
   bootstrap: [ AppComponent ],
 })
 export class AppModule { }

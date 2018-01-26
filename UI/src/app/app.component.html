@@ -1,6 +1,4 @@
-
-
-<div>
+<div style="text-align:center">
   <h1>
     {{title}}
   </h1>
@@ -11,33 +9,28 @@
     Upload
   </button>
 
-  <a target="_self" [href]="href" 
-     [download]="responseJson?.originalname" class="button">
-     Download
+  <a target="_self" [href]="href" [download]="responseJson?.originalname" class="button">
+    Download
   </a>
-  
+
+  <br/>
   <div *ngIf="responseJson">
-      <br/>
-    <img [src]="responseJson?.path">
+    <br/>
+    <img [src]="responseJson.path" style="max-width: 1000px">
   </div>
 
-  
-</div>
 
-<input type="file" (change)="fileChangeEvent($event)" />
-    <image-cropper
-        style="width:500px"
-        [imageChangedEvent]="imageChangedEvent"
-        [maintainAspectRatio]="false"
-        [resizeToWidth]="1024"
-        format="png"
-        (imageCropped)="imageCropped($event)"
-    ></image-cropper>
-    <img [src]="croppedImage" />
-    <input [value]="croppedImage">
-    <div>
-      <p>Taken from wikpedia</p>
-      <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+
+
+  <input type="file" (change)="fileChangeEvent($event)" />
+  <image-cropper style="width:30%; left:35%" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="false" [resizeToWidth]="1024"
+    format="png" (imageCropped)="imageCropped($event)"></image-cropper>
+  <img [src]="croppedImage" />
+  <div>
+    <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
   AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
       9TXL0Y4OHwAAAABJRU5ErkJggg==" />
   </div>
+  <a target="_self" [href]="croppedImage" [download]="">sss</a>
+
+</div>

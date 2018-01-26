@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { IpAddressService } from './ip-address.service';
 import { MessageService } from './message.service';
-import { HeroService } from './hero.service';
 
 const BACKEND_URL = 'http://localhost:3000';
 const FRONTEND_URL = 'http://localhost:4200/';
@@ -17,17 +16,13 @@ export class AppComponent {
     title = 'Upload or drop your photo and make it beautiful :)';
     responseJson: any;
     href = '';
-    url = 'http://angularorange.io/json/httpclientdata.json';
 
-    constructor(private messageService: MessageService, private heroService: HeroService) { }
+    constructor(private messageService: MessageService, private ipAddressService: IpAddressService) { }
 
     ngOnInit() {
-        // this.http.get(this.url)
-        //     .subscribe(data => {
-        //         console.log('DATA: ' + data);
-        //     });
-        //this.ipAddressService.getIpAddress();
-        this.heroService.getHeroes();
+        this.ipAddressService.getClientIpAddress().subscribe(response => {
+            
+        });
 
         this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
         this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
